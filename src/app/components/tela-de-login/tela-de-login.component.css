@@ -1,0 +1,26 @@
+fieldset {
+  width: 500px;
+  margin: 8rem auto auto auto;
+  padding: 30px;
+  border: solid 0.2rem;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.button-container button {
+  margin: 0 3rem;
+  color: rgb(0, 0, 0);
+  background-color: white;
+  border-radius: 1rem;
+  font-size: 1.1125rem;
+  padding: 0.3rem;
+  width: 8rem;
+}
+
+.button-container button:hover{
+  background-color: aquamarine;
+  transition: 1s;
+  cursor: pointer;
+}
