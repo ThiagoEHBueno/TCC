@@ -20,42 +20,24 @@
   <body>
     <fieldset>
       <legend>Cadastro</legend>
-      <div>
-        <label>Nome</label>
-        <input type="text" name="Nome" id="nome">
-      </div>
-      <div>
-        <label>Sobrenome</label>
-        <input type="text" name="Sobrenome" id="sobrenome">
-      </div>
-      <div>
-        <div>
-          <label>Idade</label>
-          <input type="number" name="idade" id="idade">
-        </div>
-        <label for="E-mail">E-mail</label>
-        <input type="email" name="E-mail" id="email">
-      </div>
-      <div>
-        <label>Sexo: </label>
-        <input type="radio" name="sexo" value="masculino"> Masculino
-        <input type="radio" name="sexo" value="feminino"> Feminino
-      </div>
-      <div>
-        <label>Senha</label>
-        <input type="password" name="Senha" id="senha">
-        <br>
-        <label>Confirme sua senha</label>
-        <input type="password" name="Senha" id="confirme">
-      </div>
-      <div>
-        <label>Escola</label>
-        <input type="text" name="escola" id="escola">
-      </div>
-      <div>
-        <label>Número</label>
-        <input type="number" name="numero" id="numero">
-      </div>
+      <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" formControlName="nome" required>
+        
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" formControlName="senha" required>
+      
+        <label for="confirmarSenha">Confirmar Senha:</label>
+        <input type="password" id="confirmarSenha" formControlName="confirmarSenha" required>
+      
+        <label for="escola">Escola:</label>
+        <input type="text" id="escola" formControlName="escola">
+      
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" formControlName="numero">
+      
+        <button type="submit" [disabled]="cadastroForm.invalid">Cadastrar</button>
+      </form>
     </fieldset>
   </body>
 </body>
