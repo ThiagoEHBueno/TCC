@@ -20,7 +20,6 @@ export class CadastroProfessorComponent implements OnInit {
       sobrenome: ['', Validators.required],
       idade: ['', [Validators.required, Validators.min(0)]],
       email: ['', [Validators.required, Validators.email]],
-      sexo: ['', Validators.required],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       confirmarSenha: ['', Validators.required],
       escola: [''],
@@ -32,7 +31,7 @@ export class CadastroProfessorComponent implements OnInit {
     this.authService.cadastrarUsuario(this.cadastroForm.value).subscribe(
       (data) => {
         console.log('Usuário cadastrado com sucesso', data);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/tela-de-login']);
       },
       (error) => {
         console.error('Erro ao cadastrar usuário', error);

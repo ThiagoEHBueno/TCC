@@ -3,18 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private baseUrl = 'http://localhost:3000/api';
 
-  private apiUrl = 'http://localhost:3000';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
   cadastrarUsuario(usuario: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/registrar`, usuario);
-  }
-
-  realizarLogin(credenciais: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credenciais);
+    console.log('Dados a serem enviados:', usuario);
+    const url = `${this.baseUrl}/cadastrarUsuario`;
+    return this.http.post(url, usuario);
   }
 }
