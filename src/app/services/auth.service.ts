@@ -15,4 +15,13 @@ export class AuthService {
     const url = `${this.baseUrl}/cadastrarUsuario`;
     return this.http.post(url, usuario);
   }
+    
+  login(credentials: { email: string, senha: string }): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/login`, credentials);
+  }
+
+  // Método para obter informações do usuário após o login
+  getUserInfo(tipo: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/userInfo`, { params: { tipo } });
+  }
 }

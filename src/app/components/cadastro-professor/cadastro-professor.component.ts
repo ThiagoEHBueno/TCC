@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 
 export class CadastroProfessorComponent implements OnInit {
   cadastroForm!: FormGroup;
+  tipoUsuario: string = 'professor';
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -28,7 +29,12 @@ export class CadastroProfessorComponent implements OnInit {
   }
 
   cadastrar() {
-    this.authService.cadastrarUsuario(this.cadastroForm.value).subscribe(
+    const usuario = {
+      ...this.cadastroForm.value,
+      tipo: this.tipoUsuario  // Adiciona o tipo de usuário ao objeto do usuário
+    };
+  
+    this.authService.cadastrarUsuario(usuario).subscribe(
       (data) => {
         console.log('Usuário cadastrado com sucesso', data);
         this.router.navigate(['/tela-de-login']);
@@ -38,4 +44,5 @@ export class CadastroProfessorComponent implements OnInit {
       }
     );
   }
+  
 }
