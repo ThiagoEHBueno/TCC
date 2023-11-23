@@ -15,23 +15,28 @@
   </header>
   <main>
     <div>
-      <fieldset>
-        <legend>Entrar</legend>
-        <div class="button-container">
-          <button>Professor</button>
-          <button>Aluno</button>
-        </div>
-        <br><br>
-        <input type="text" placeholder="Usuário">
-        <br><br>
-        <input type="text" placeholder="Senha">
-        <br><br>
-        <button>Login</button>
-        <br>
-        <label>Não tem uma conta?</label>
-        <a routerLink="/cadastro-professor">Cadastro</a>
-      </fieldset>
+      <form (submit)="fazerLogin()">
+        <fieldset>
+          <legend>Entrar</legend>
+          <div class="radio-container">
+            <select [(ngModel)]="tipo" (change)="onChangeTipo($event)" name="tipo">
+              <option value="professor">Professor</option>
+              <option value="aluno">Aluno</option>
+            </select>
+          </div>
+          <br><br>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="email">
+          <br><br>
+          <input type="password" [(ngModel)]="senha" name="senha" placeholder="senha">
+          <br><br>
+          <button type="submit">Login</button>
+          <br>
+          <label>Não tem uma conta?</label>
+          <a routerLink="/cadastro-professor">Cadastro</a>
+        </fieldset>
+      </form>
     </div>
   </main>
+  
 </body>
 </html>
