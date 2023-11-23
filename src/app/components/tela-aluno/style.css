@@ -19,20 +19,23 @@ body {
 }
 
 .alunohome {
-    margin: 5%;
+    margin: 4%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     font-family: 'Lilita One', sans-serif;
     text-align: center;
+    gap: 5px;
 }
 
 .alunohome__caixaesquerda{
     align-items: center;
+    gap: 5px;
 }
 
 .alunohome__caixadireita{
     align-items: center;
+    gap: 5px;
 }
 
 .atividades{
