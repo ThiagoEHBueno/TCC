@@ -35,7 +35,6 @@ app.post('/api/cadastrarUsuario', async (req, res) => {
   try {
     // Gera um hash para a senha fornecida
     const hashSenha = await bcrypt.hash(senha, 10); // 10 é o custo do hash (quanto maior, mais seguro e lento)
-    console.log('Hash da senha:', hashSenha);
     // Insere no banco de dados com a senha já hasheada
     db.query(
       'INSERT INTO usuarios (nome, sobrenome, idade, email, senha, escola, numero, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
