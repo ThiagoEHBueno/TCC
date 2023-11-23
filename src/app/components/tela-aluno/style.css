@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: #e0dfdf;
+    background-image:url(fundo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    align-items: center;
+    font-size: 35px;
+}
+
+.alunohome {
+    margin: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'Lilita One', sans-serif;
+    text-align: center;
+}
+
+.alunohome__caixaesquerda{
+    align-items: center;
+}
+
+.alunohome__caixadireita{
+    align-items: center;
+}
+
+.atividades{
+    background-color: #ffffff;
+    margin: 5%;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.28);
+    border: 3px solid var(--preto, #000);
+    border-radius: 44px;
+    padding: 40px 40px;
+    padding-right: 40px;
+    align-items: center;
+}
+
+.ferramentas{
+    background-color: #ffffff;
+    margin: 5%;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.28);
+    border: 3px solid var(--preto, #000);
+    border-radius: 44px;
+    padding: 40px;
+    padding-right: 80px;
+    align-items: center;
+}
+
+.jogos{
+    background-color: #ffffff;
+    margin: 5%;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.28);
+    border: 3px solid var(--preto, #000);
+    border-radius: 44px;
+    padding: 38px 125px;
+    align-items: center;
+}
+
+.aluno{
+    background-color: #ffffff;
+    margin: 5%;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.28);
+    border: 3px solid var(--preto, #000);
+    border-radius: 44px;
+    padding: 32px;
+    align-items: center;
+}
