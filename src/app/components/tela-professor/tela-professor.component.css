@@ -31,7 +31,7 @@ body {
     display: grid;
 }
 .bloco > * {
-    grid-area: 1 / -1
+    grid-area: 1 / -1;
 }
 
 .perfil{
@@ -85,12 +85,14 @@ body {
 .turmas{
     background-color: white;
     align-content: right;
+    display: flex;
     width: 850px;
     height: 550px;
     border-radius: 0px 68px 68px 0px;
     justify-self: end;
     align-self: center;
 }
+
 
 .modal {
     position: fixed;
@@ -114,4 +116,5 @@ body {
   .close {
     float: right;
     cursor: pointer;
-  }
+    border: 4px solid var(--preto, #000);
+}
