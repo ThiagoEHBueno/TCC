@@ -17,11 +17,21 @@ export class AuthService {
   }
     
   login(credentials: { email: string, senha: string }): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/login`, credentials);
+    return this.http.post<any>(`${this.baseUrl}/login`, credentials).pipe(
+    );
   }
 
   // Método para obter informações do usuário após o login
   getUserInfo(tipo: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/userInfo`, { params: { tipo } });
   }
+
+  criarTurma(turmaData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/criarTurma`, turmaData);
+  }
+
+  obterTurmas(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl + '/turmas');
+  }
+
 }

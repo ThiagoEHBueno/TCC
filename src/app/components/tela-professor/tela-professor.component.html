@@ -13,24 +13,43 @@
     <div class="bloco">
       <section class="perfil">
         <div class="foto" alt="Foto de Perfil">
-          <a href=" "><img src="fotoexemplo.png"></a>
+          <a href=" "><img src="fotoexemplo.png" alt="Foto de Exemplo"></a>
         </div>
         <div class="infos">
-          <p><h2><div class="nomeprof">Nome do Professor</div></h2>
-          <h3><p><div class="infotec">Professor
-          <label>Escola</label> <h3>"Nome da Escola"</h3></div>
-        <div class="botao">
-              <button>Configurar</button>
-              <button>Sair</button>
-            </div>
-      <Section class="turmas">
-          <div>
-            <ul id="lista-turmas">
-              lista de turmas
-          </ul>
-          <button>+ Adicionar</button>
+          <h2 class="nomeprof">Nome do Professor</h2>
+          <div class="infotec">
+            <p>Professor</p>
+            <label>Escola</label>
+            <h3>Nome da Escola</h3>
           </div>
-      </Section>
+          <div class="botao">
+            <button>Configurar</button>
+            <button>Sair</button>
+          </div>
+        </div>
+      </section>
+      <section class="turmas">
+        <div>
+          <!-- Lista de turmas -->
+          <ul id="lista-turmas">
+            <li *ngFor="let turma of listaTurmas">
+              <a [routerLink]="'/turma/' + turma.id">
+                {{ turma.nome }} - {{ turma.descricao }}
+              </a>
+            </li>
+          </ul>
+          <button (click)="abrirModal()">+ Adicionar</button>
+        </div>
+        <div id="modal" class="modal" *ngIf="modalAberto" (click)="fecharModalFora($event)">
+          <div class="modal-content">
+            <span class="close" (click)="fecharModal()">&times;</span>
+            <h2>Adicionar Turma</h2>
+            <input type="text" id="nomeTurma" placeholder="Nome da Turma">
+            <textarea id="descricaoTurma" placeholder="Descrição da Turma"></textarea>
+            <button (click)="adicionarTurma()">+ Adicionar</button>
+          </div>
+        </div>        
+      </section>
     </div>
   </main>
 </body>

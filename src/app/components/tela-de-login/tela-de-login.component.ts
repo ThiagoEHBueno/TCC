@@ -11,6 +11,7 @@ export class TelaDeLoginComponent {
   email: string = '';
   senha: string = '';
   tipo: string = '';
+  id: string = '';
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -22,6 +23,9 @@ export class TelaDeLoginComponent {
   
     const credentials = { email: this.email, senha: this.senha, tipo: this.tipo };
     console.log(credentials);
+    localStorage.setItem('userEmail', this.email);
+            // Para recuperar o email armazenado:
+    const userEmail = localStorage.getItem('userEmail');
 
     this.authService.login(credentials).subscribe(
       (res) => {

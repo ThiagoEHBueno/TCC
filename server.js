@@ -80,6 +80,7 @@ app.post('/api/login', (req, res) => {
           
           if (match) {
             console.log('Login bem-sucedido:', email);
+
             db.query('SELECT tipo FROM usuarios WHERE id = ?', [usuario.id], (err, userInfo) => {
               if (err) {
                 console.error('Erro ao buscar informações do usuário:', err);
@@ -100,7 +101,7 @@ app.post('/api/login', (req, res) => {
                     'seuSegredo', // Use sua chave secreta para assinar o token
                     { expiresIn: '1h' }
                   );
-                  res.status(200).json({ token });
+                  res.status(200).json({id: usuario.id, token });
                 } else {
                   console.log('Nenhuma informação de tipo de usuário encontrada.');
                   res.status(500).json({ error: 'Informações de usuário ausentes' });
@@ -122,6 +123,52 @@ app.post('/api/login', (req, res) => {
   }
 });
 
+  app.get('/api/perfilUsuario', (req, res) => {
+    db.query('SELECT * FROM usuarios WHERE email = ?', [userEmail], (err, usuario) => {
+      if (err) {
+        console.error('Erro ao buscar perfil do usuário:', err);
+        res.status(500).json({ error: 'Erro interno do servidor' });
+      } else {
+        console.log('Perfil do usuário encontrado:', usuario);
+        res.status(200).json(usuario);
+      }
+    }); 
+  });
+
+// Supondo que você já configurou seu servidor Express e tem o MySQL conectado
+
+app.post('/api/criarTurma', (req, res) => {
+  const { nome, descricao, email } = req.body;
+  console.log('Dados recebidos:', { nome, descricao, email });
+
+  // Execute uma query SQL para inserir os dados na tabela de turmas
+  db.query(
+    'INSERT INTO Turmas (nome, descricao, professor_email) VALUES (?, ?, ?)',
+    [nome, descricao, email],
+    (err, result) => {
+      if (err) {
+        console.error('Erro ao criar turma:', err);
+        res.status(500).json({ error: 'Erro ao criar turma' });
+      } else {
+        console.log('Turma criada com sucesso');
+        res.status(200).json({ success: true, turma: { nome, descricao, email }});
+      }
+    }
+  );
+});
+
+app.get('/api/turmas', (req, res) => {
+  // Lógica para buscar as turmas do banco de dados
+  db.query('SELECT * FROM turmas', (err, turmas) => {
+    if (err) {
+      console.error('Erro ao buscar as turmas:', err);
+      res.status(500).json({ error: 'Erro interno do servidor ao buscar as turmas' });
+    } else {
+      console.log('Turmas encontradas:', turmas);
+      res.status(200).json(turmas);
+    }
+  });
+});
 
 
 app.listen(port, () => {
