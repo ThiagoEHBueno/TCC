@@ -5,23 +5,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Classes</title>
-  <link rel="stylesheet" href="turmas-professor.component.css">
 </head>
 <body>
   <header></header>
   <main class="professor-turmas">
     <section class="bloco">
-      <div class="voltar" alt="Voltar">
-          <a href="./tela-professor/tela-professor.component.html"><img src="voltar-imagem.png"></a>
-          <h3><p>Voltar</p></h3>
-      </div>
+        <div class="voltar" alt="Voltar">
+            <a href="./tela-professor/tela-professor.component.html"><img src="voltar-imagem.png"></a>
+            <h3><p>Voltar</p></h3>
+        </div>
         <div class="botao">
             <button>Atividades</button>
             <button>Alunos</button>
         </div>
+        <div class="alunos-lista">
+          <h2>Alunos</h2>
+          <ul>
+            <li *ngFor="let aluno of alunos">
+              <p>{{ aluno.nome }} {{ aluno.sobrenome }}</p>
+              <!-- Adicione aqui outras informações do aluno que deseja exibir -->
+            </li>
+          </ul>
+        </div>    
         <div class="adicionar">
-          <button>+ Adicionar</button>
-        </div>
+          <fieldset>
+            <form [formGroup]="alunoForm" (ngSubmit)="cadastrarAluno()">
+              <input type="text" placeholder="Usuario" formControlName="nome_usuario" required>
+              <input type="text" placeholder="Nome" formControlName = "nome" required>
+              <input type="text" placeholder="Sobrenome" formControlName = "sobrenome" required>
+              <input type="password" placeholder="Senha" formControlName = "senha" required>
+              <select formControlName = "tipoAluno">
+                <option value="aluno">Aluno</option>
+                <!-- Outras opções de tipo, se necessário -->
+              </select>
+              <button type="submit">Cadastrar</button>
+            </form>
+          </fieldset>
+        </div>                     
       </section>
   </main>
 </body>

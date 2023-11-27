@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./tela-de-login.component.css']
 })
 export class TelaDeLoginComponent {
+  nomeUsuario: string = '';
   email: string = '';
   senha: string = '';
   tipo: string = '';
@@ -16,6 +17,7 @@ export class TelaDeLoginComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
   fazerLogin() {
+    console.log(this.tipo)
     if (this.email.trim() === '' || this.senha.trim() === '') {
       alert('Preencha usuário e senha!');
       return;
@@ -24,15 +26,12 @@ export class TelaDeLoginComponent {
     const credentials = { email: this.email, senha: this.senha, tipo: this.tipo };
     console.log(credentials);
     localStorage.setItem('userEmail', this.email);
-            // Para recuperar o email armazenado:
-    const userEmail = localStorage.getItem('userEmail');
+
 
     this.authService.login(credentials).subscribe(
       (res) => {
         if (this.tipo === 'professor') {
           this.router.navigate(['/tela-professor']);
-        } else if (this.tipo === 'aluno') {
-          this.router.navigate(['/dashboard-aluno']);
         } else {
           console.log('Resposta do servidor:', res);
           alert('Resposta do servidor inválida');
@@ -43,6 +42,32 @@ export class TelaDeLoginComponent {
         console.error('Erro ao fazer login:', err);
         if (err.status === 401) {
           alert('Credenciais inválidas. Verifique seu email e senha.');
+        } else if (err.status === 500) {
+          alert('Erro interno no servidor. Tente novamente mais tarde.');
+        } else {
+          alert('Falha no login. Verifique suas credenciais.');
+        }
+      }
+    );
+  }
+
+  fazerLoginAluno() {
+    if (this.nomeUsuario.trim() === '' || this.senha.trim() === '') {
+      alert('Preencha usuário e senha!');
+      return;
+    }
+  
+    const credentials = { nomeUsuario: this.nomeUsuario, senha: this.senha, tipo: this.tipo };
+    console.log('dados: ', credentials);
+    
+    this.authService.loginAluno(this.nomeUsuario, this.senha).subscribe(
+      (res) => {
+        this.router.navigate(['/tela-professor']); // ou outra rota específica para o aluno
+      },
+      (err) => {
+        console.error('Erro ao fazer login do aluno:', err);
+        if (err.status === 401) {
+          alert('Credenciais inválidas. Verifique seu nome de usuário e senha.');
         } else if (err.status === 500) {
           alert('Erro interno no servidor. Tente novamente mais tarde.');
         } else {

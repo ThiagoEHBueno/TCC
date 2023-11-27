@@ -21,6 +21,11 @@ export class AuthService {
     );
   }
 
+  loginAluno(nomeUsuario: string, senha: string): Observable<any> {
+    const credentials = { nome_usuario: nomeUsuario, senha, tipo: 'aluno' };
+    return this.http.post<any>(`${this.baseUrl}/loginAluno`, credentials);
+  }  
+
   // Método para obter informações do usuário após o login
   getUserInfo(tipo: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/userInfo`, { params: { tipo } });
@@ -34,4 +39,23 @@ export class AuthService {
     return this.http.get<any[]>(this.baseUrl + '/turmas');
   }
 
+  obterDetalhesTurma(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  }  
+
+  cadastrarAluno(dadosAluno: any): Observable<any> {
+    console.log('Dados a serem enviados:', dadosAluno);
+    const url = `${this.baseUrl}/cadastrarAluno`;
+    return this.http.post(url, dadosAluno);
+  }
+
+  obterAlunos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/obterAlunos`);
+  }
+
+  obterAlunosDaTurma(idTurma: number): Observable<any[]> {
+    console.log(idTurma)
+    return this.http.get<any[]>(`${this.baseUrl}/obterAlunosDaTurma/${idTurma}`);
+  }   
+    
 }

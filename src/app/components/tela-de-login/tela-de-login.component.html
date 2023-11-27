@@ -15,7 +15,7 @@
   </header>
   <main>
     <div>
-      <form (submit)="fazerLogin()">
+      <form>
         <fieldset>
           <legend>Entrar</legend>
           <div class="radio-container">
@@ -25,16 +25,20 @@
             </select>
           </div>
           <br><br>
-          <input type="email" [(ngModel)]="email" name="email" placeholder="email">
+          <input *ngIf="tipo === 'professor'" type="email" [(ngModel)]="email" name="email" placeholder="email">
+          <input *ngIf="tipo === 'aluno'" type="email" [(ngModel)]="nomeUsuario" name="nomeUsuario" placeholder="email">
           <br><br>
-          <input type="password" [(ngModel)]="senha" name="senha" placeholder="senha">
+          <input *ngIf="tipo === 'professor'" type="password" [(ngModel)]="senha" name="senha" placeholder="senha">
+          <input *ngIf="tipo === 'aluno'" type="password" [(ngModel)]="senha" name="senha" placeholder="senha">
           <br><br>
-          <button type="submit">Login</button>
+          <button type="submit" *ngIf="tipo === 'professor'" (click)="fazerLogin()">Login Professor</button>
+          <button type="submit" *ngIf="tipo === 'aluno'" (click)="fazerLoginAluno()">Login Aluno</button>
           <br>
           <label>Não tem uma conta?</label>
           <a routerLink="/cadastro-professor">Cadastro</a>
         </fieldset>
       </form>
+      
     </div>
   </main>
   

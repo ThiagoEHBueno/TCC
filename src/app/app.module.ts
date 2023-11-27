@@ -7,11 +7,13 @@ import { TelaDeLoginComponent } from './components/tela-de-login/tela-de-login.c
 import { CadastroProfessorComponent } from './components/cadastro-professor/cadastro-professor.component';
 import { CadastroAlunoComponent } from './components/cadastro-aluno/cadastro-aluno.component';
 import { TelaProfessorComponent } from './components/tela-professor/tela-professor.component';
+import { TurmasProfessorComponent } from './components/turmas-professor/turmas-professor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -22,8 +24,9 @@ import { FormsModule } from '@angular/forms';
     CadastroProfessorComponent,
     CadastroAlunoComponent,
     TelaProfessorComponent,
+    TurmasProfessorComponent,
     AppComponent,
-
+    
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    CommonModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

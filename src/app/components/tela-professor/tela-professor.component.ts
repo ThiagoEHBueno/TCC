@@ -102,16 +102,9 @@ carregarTurmas() {
       this.listaTurmas = data.filter((turma: any) => {
         const emailTurma = turma.professor_email ? turma.professor_email.trim().toLowerCase() : null;
         const emailUsuario = userEmail.trim().toLowerCase();
-        console.log('Email do professor:', emailUsuario);
-        console.log('Email da turma:', emailTurma);
-        console.log('Email do professor - codificado:', encodeURIComponent(emailUsuario));
-        console.log('Email da turma - codificado:', encodeURIComponent(emailTurma));
         const saoIguais = emailTurma === emailUsuario;
-        console.log('Emails são iguais?', saoIguais);
         return saoIguais;
       });
-      
-      
     
       console.log('Lista de turmas:', this.listaTurmas);
     },
