@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlunoHomeComponent} from './alunohome.component';
+import { AlunoHomeComponent} from './tela-aluno.component';
 
 describe('AlunoHomeComponent', () => {
   let component: AlunoHomeComponent;

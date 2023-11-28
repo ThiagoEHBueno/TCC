@@ -5,6 +5,9 @@ import { TelaDeLoginComponent } from './components/tela-de-login/tela-de-login.c
 import { TelaProfessorComponent } from './components/tela-professor/tela-professor.component';
 import { TelaInicialComponent } from './components/tela-inicial/tela-inicial.component';
 import { TurmasProfessorComponent } from './components/turmas-professor/turmas-professor.component';
+import { TelaAlunoComponent } from './components/tela-aluno/tela-aluno.component';
+import { FerramentaComponent } from './components/ferramenta/ferramenta.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'tela-inicial', pathMatch: 'full'},
@@ -13,7 +16,9 @@ const routes: Routes = [
   {path: 'tela-de-login', component: TelaDeLoginComponent},
   {path: 'tela-professor', component: TelaProfessorComponent},
   {path: 'turmas-professor', component: TurmasProfessorComponent},
-  {path: 'turmas-professor/:id', component: TurmasProfessorComponent } 
+  {path: 'turmas-professor/:id', component: TurmasProfessorComponent },
+  {path: 'tela-aluno', component: TelaAlunoComponent },
+  {path: 'ferramenta', component: FerramentaComponent },
 ];
 
 @NgModule({

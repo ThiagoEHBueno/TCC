@@ -46,7 +46,11 @@ body {
     border-radius: 44px;
     padding: 40px 40px;
     padding-right: 40px;
+    padding-top: 150px;
     align-items: center;
+    background-image: url(assets/imagens/imagematividades.png);
+    background-repeat: no-repeat;
+    background-position: top 15px center;
 }
 
 .ferramentas{
@@ -57,7 +61,11 @@ body {
     border-radius: 44px;
     padding: 40px;
     padding-right: 80px;
+    padding-top: 150px;
     align-items: center;
+    background-image: url(assets/imagens/imagemferramentas.png);
+    background-repeat: no-repeat;
+    background-position: top 15px center;
 }
 
 .jogos{
@@ -67,7 +75,11 @@ body {
     border: 3px solid var(--preto, #000);
     border-radius: 44px;
     padding: 38px 125px;
+    padding-top: 150px;
     align-self: center;
+    background-image: url(assets/imagens/imagemjogos.png);
+    background-repeat: no-repeat;
+    background-position: top 15px center;
 }
 
 .aluno{
@@ -77,5 +89,9 @@ body {
     border: 3px solid var(--preto, #000);
     border-radius: 44px;
     padding: 32px;
+    padding-top: 150px;
     align-items: center;
+    background-image: url(assets/imagens/imagemperfil.png);
+    background-repeat: no-repeat;
+    background-position: top 15px center;
 }

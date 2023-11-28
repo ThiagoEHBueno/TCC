@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './ferramenta.component.html',
   styleUrls: ['./ferramenta.component.css']
 })
-export class TelaInicialComponent implements OnInit {
+export class FerramentaComponent implements OnInit {
 
   constructor() { }
 

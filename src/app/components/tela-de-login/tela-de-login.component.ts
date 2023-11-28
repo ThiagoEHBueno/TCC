@@ -62,7 +62,7 @@ export class TelaDeLoginComponent {
     
     this.authService.loginAluno(this.nomeUsuario, this.senha).subscribe(
       (res) => {
-        this.router.navigate(['/tela-professor']); // ou outra rota específica para o aluno
+        this.router.navigate(['/tela-aluno']); // ou outra rota específica para o aluno
       },
       (err) => {
         console.error('Erro ao fazer login do aluno:', err);

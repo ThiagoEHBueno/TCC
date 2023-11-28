@@ -8,6 +8,8 @@ import { CadastroProfessorComponent } from './components/cadastro-professor/cada
 import { CadastroAlunoComponent } from './components/cadastro-aluno/cadastro-aluno.component';
 import { TelaProfessorComponent } from './components/tela-professor/tela-professor.component';
 import { TurmasProfessorComponent } from './components/turmas-professor/turmas-professor.component';
+import { FerramentaComponent } from './components/ferramenta/ferramenta.component';
+import { TelaAlunoComponent } from './components/tela-aluno/tela-aluno.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +27,8 @@ import { CommonModule } from '@angular/common';
     CadastroAlunoComponent,
     TelaProfessorComponent,
     TurmasProfessorComponent,
+    TelaAlunoComponent,
+    FerramentaComponent,
     AppComponent,
     
   ],
