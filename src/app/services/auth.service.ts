@@ -54,8 +54,7 @@ export class AuthService {
   }
 
   obterAlunosDaTurma(idTurma: number): Observable<any[]> {
-    console.log(idTurma)
     return this.http.get<any[]>(`${this.baseUrl}/obterAlunosDaTurma/${idTurma}`);
-  }   
+  }
     
 }

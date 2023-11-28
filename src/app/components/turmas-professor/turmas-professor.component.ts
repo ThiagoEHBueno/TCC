@@ -41,26 +41,13 @@ export class TurmasProfessorComponent implements OnInit {
       const parsedId = parseInt(id, 10); // Converter a string para número
       if (!isNaN(parsedId)) {
         this.turmaId = parsedId;
-        this.carregarDetalhesTurma(parsedId);
+        this.obterAlunosDaTurma(parsedId);
       } else {
         // Tratar caso o ID não seja um número válido
       }
     } else {
       // Tratar caso o ID não esteja presente na rota
     }
-  }
-
-  carregarDetalhesTurma(id: number) {
-    // Chamar a API para buscar os detalhes da turma com o ID fornecido
-    this.authService.obterDetalhesTurma(id).subscribe(
-      (data) => {
-        this.turma = data; // Atualizar os detalhes da turma na variável
-      },
-      (error) => {
-        console.error('Erro ao carregar detalhes da turma:', error);
-        // Tratar erros, por exemplo, exibindo uma mensagem de erro na interface
-      }
-    );
   }
 
   cadastrarAluno() {
@@ -82,8 +69,9 @@ export class TurmasProfessorComponent implements OnInit {
       );
     }
   }
-  obterAlunosDaTurma(idTurma: number) {
-    this.authService.obterAlunosDaTurma(idTurma).subscribe(
+
+  obterAlunosDaTurma(turmaId: number) {
+    this.authService.obterAlunosDaTurma(turmaId).subscribe(
       (data) => {
         this.alunos = data; // Recebe os alunos obtidos da turma específica
       },
