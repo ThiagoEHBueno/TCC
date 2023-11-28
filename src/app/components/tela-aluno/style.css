@@ -67,7 +67,7 @@ body {
     border: 3px solid var(--preto, #000);
     border-radius: 44px;
     padding: 38px 125px;
-    align-items: center;
+    align-self: center;
 }
 
 .aluno{
