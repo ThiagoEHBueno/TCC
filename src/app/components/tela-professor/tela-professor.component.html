@@ -15,11 +15,12 @@
           <a href=" "><img src="assets/imagens/fotoexemplo.png" alt="Foto de Exemplo"></a>
         </div>
         <div class="infos">
-          <h2 class="nomeprof">Nome do Professor</h2>
+          <h2 class="nomeprof"></h2>
           <div class="infotec">
             <p>Professor</p>
-            <label>Escola</label>
-            <h3>Nome da Escola</h3>
+            <h3></h3>
+            <label>Escola: </label>
+            <h3></h3>
           </div>
           <div class="botao">
             <button>Configurar</button>
@@ -28,15 +29,18 @@
         </div>
       </section>
       <section class="turmas">
-        <div>
+        <div class="lista-turmas-container">
           <!-- Lista de turmas -->
           <ul id="lista-turmas">
-            <li *ngFor="let turma of listaTurmas">
+            <li *ngFor="let turma of listaTurmas" class="item-lista">
               <a [routerLink]="'/turmas-professor/' + turma.id">
-                {{ turma.nome }} - {{ turma.descricao }}
+                Turma: {{ turma.nome }} - Descrição: {{ turma.descricao }}
               </a>
             </li>
           </ul>
+        </div>
+        <div class="adicionar-button">
+          <!-- Botão de adicionar -->
           <button (click)="abrirModal()">+ Adicionar</button>
         </div>
         <div id="modal" class="modal" *ngIf="modalAberto" (click)="fecharModalFora($event)">

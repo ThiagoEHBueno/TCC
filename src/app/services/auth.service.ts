@@ -26,11 +26,6 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/loginAluno`, credentials);
   }  
 
-  // Método para obter informações do usuário após o login
-  getUserInfo(tipo: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/userInfo`, { params: { tipo } });
-  }
-
   criarTurma(turmaData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/criarTurma`, turmaData);
   }
@@ -56,5 +51,5 @@ export class AuthService {
   obterAlunosDaTurma(idTurma: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/obterAlunosDaTurma/${idTurma}`);
   }
-    
+
 }

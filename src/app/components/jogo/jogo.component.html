@@ -10,11 +10,22 @@
 <body>
   <header></header>
   <div class="voltar" alt="Voltar">
-    <a href="./tela-professor/tela-professor.component.html"><img src="voltar-cinza.png"></a>
+    <a routerLink="/tela-aluno"><img src="assets/imagens/voltar-cinza.png"></a>
   </div>
   <main class="professor-turmas">
     <section class="bloco">
-      </section>
+      <div class="jogo container">
+        <h1>Jogo de Adivinhação</h1>
+        <p>{{ result }}</p>
+        <input type="number" [(ngModel)]="userGuess" placeholder="Digite seu palpite" />
+        <div class="buttons">
+          <button (click)="checkGuess()">Verificar</button>
+          <button (click)="showAttempts()">Mostrar Tentativas</button>
+          <button (click)="restartGame()">Novo Jogo</button>
+        </div>
+      </div>      
+    </section>
   </main>
+  
 </body>
 </html>

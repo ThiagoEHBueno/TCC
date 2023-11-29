@@ -113,5 +113,7 @@ carregarTurmas() {
       // Tratar possíveis erros ao buscar as turmas
     }
   );
+  
 }
+
 }

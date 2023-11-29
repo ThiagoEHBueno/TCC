@@ -123,17 +123,6 @@ app.post('/api/login', (req, res) => {
   }
 });
 
-  app.get('/api/perfilUsuario', (req, res) => {
-    db.query('SELECT * FROM usuarios WHERE email = ?', [userEmail], (err, usuario) => {
-      if (err) {
-        console.error('Erro ao buscar perfil do usuário:', err);
-        res.status(500).json({ error: 'Erro interno do servidor' });
-      } else {
-        console.log('Perfil do usuário encontrado:', usuario);
-        res.status(200).json(usuario);
-      }
-    }); 
-  });
 
 // Supondo que você já configurou seu servidor Express e tem o MySQL conectado
 

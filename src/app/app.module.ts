@@ -10,6 +10,7 @@ import { TelaProfessorComponent } from './components/tela-professor/tela-profess
 import { TurmasProfessorComponent } from './components/turmas-professor/turmas-professor.component';
 import { FerramentaComponent } from './components/ferramenta/ferramenta.component';
 import { TelaAlunoComponent } from './components/tela-aluno/tela-aluno.component';
+import { JogoComponent } from './components/jogo/jogo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -29,6 +30,7 @@ import { CommonModule } from '@angular/common';
     TurmasProfessorComponent,
     TelaAlunoComponent,
     FerramentaComponent,
+    JogoComponent,
     AppComponent,
     
   ],
