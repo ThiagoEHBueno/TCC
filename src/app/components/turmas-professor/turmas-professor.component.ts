@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,11 +19,11 @@ export class TurmasProfessorComponent implements OnInit {
   senha: string = '';
   tipoAluno: string = 'aluno';
 
-
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -41,7 +41,8 @@ export class TurmasProfessorComponent implements OnInit {
       const parsedId = parseInt(id, 10); // Converter a string para número
       if (!isNaN(parsedId)) {
         this.turmaId = parsedId;
-        this.obterAlunosDaTurma(parsedId);
+        this.obterAlunosDaTurma(parsedId);  
+        this.changeDetectorRef.detectChanges();
       } else {
         // Tratar caso o ID não seja um número válido
       }
@@ -81,6 +82,5 @@ export class TurmasProfessorComponent implements OnInit {
       }
     );
   }
-  
 
 }

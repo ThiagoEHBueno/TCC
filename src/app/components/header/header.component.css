@@ -1,0 +1,27 @@
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 150px;
+    background-color: rgb(213, 208, 208);
+    z-index: 1000;
+}
+
+.title {
+    flex-grow: 1;
+}
+
+.header-inicial {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 1000px; 
+}
+
+.header-inicial h1 {
+    font-weight: bolder;
+    font-size: 30px;
+    width: 600px;
+}

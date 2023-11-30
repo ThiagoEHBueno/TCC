@@ -1,26 +1,77 @@
+main {
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #e0dfdf;
+  background-image:url(fundo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 fieldset {
+  background-color: white;
   width: 500px;
   margin: 8rem auto auto auto;
   padding: 30px;
   border: solid 0.2rem;
+  border-radius: 8px;
 }
 
-.button-container {
-  text-align: center;
+legend {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.button-container button {
-  margin: 0 3rem;
-  color: rgb(0, 0, 0);
-  background-color: white;
-  border-radius: 1rem;
-  font-size: 1.1125rem;
-  padding: 0.3rem;
-  width: 8rem;
+.radio-container select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
-.button-container button:hover{
-  background-color: aquamarine;
-  transition: 1s;
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container input {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.input-container button {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
   cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+.input-container button:hover {
+  background-color: #0056b3;
+  transition: 1s;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+a:hover {
+  text-decoration: underline;
 }

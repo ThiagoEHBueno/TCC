@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { CommonModule } from '@angular/common';
     FerramentaComponent,
     JogoComponent,
     AppComponent,
-    
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

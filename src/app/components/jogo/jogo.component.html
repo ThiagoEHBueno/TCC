@@ -8,14 +8,13 @@
   <link rel="stylesheet" href="jogo.component.css">
 </head>
 <body>
-  <header></header>
-  <div class="voltar" alt="Voltar">
-    <a routerLink="/tela-aluno"><img src="assets/imagens/voltar-cinza.png"></a>
-  </div>
+  <app-header></app-header>
   <main class="professor-turmas">
     <section class="bloco">
       <div class="jogo container">
         <h1>Jogo de Adivinhação</h1>
+        <h2>Adivinhe o número aleatório de 1 a 50!</h2>
+        <br>
         <p>{{ result }}</p>
         <input type="number" [(ngModel)]="userGuess" placeholder="Digite seu palpite" />
         <div class="buttons">

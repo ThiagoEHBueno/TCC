@@ -1,96 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 *{
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-body {
-    height: 100vh;
-    box-sizing: border-box;
-    background-color: #e0dfdf;
-    background-image:url(fundo.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+main {
+  margin-top: 5%;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #e0dfdf;
+  background-image:url(fundo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bloco{
-    background-color:#ffffff;
-    align-content: center;
-    width: 1200px;
-    height: 550px;
-    border-radius: 68px;
-    border: 4px solid var(--preto, #000);
-    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.28);
-    display: grid;
+  background-color:#ffffff;
+  align-content: center;
+  width: 1200px;
+  height: 550px;
+  border-radius: 68px;
+  border: 4px solid var(--preto, #000);
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.28);
+  display: grid;
 }
 .bloco > * {
     grid-area: 1 / -1;
 }
 
 .voltar{ 
-    align-self: center;
-    padding: 0% 1% 0% 0%;
-    justify-self: center;
-    justify-content: space-between;
-    color: var(--preto, #000);
+  align-self: center;
+  padding: 0% 1% 0% 0%;
+  justify-self: center;
+  justify-content: space-between;
+  color: var(--preto, #000);
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
   
-  h1 {
-    margin-bottom: 40px;
-    font-size: 60px;
-  }
-  
-  input {
-    padding: 16px;
-    margin-bottom: 20px;
-    border-radius: 25px;
-    font-size: 20px;
-    font-weight: bolder;
-  }
-  
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  button {
-    padding: 8px 15px;
-    margin: 5px;
-    cursor: pointer;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.5em;
-  }
-  
-  button:hover {
-    background-color: #2980b9;
-  }
-  
-  p {
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .jogo {
-    text-align: center;
-  }
+h1 {
+  margin-bottom: 40px;
+  font-size: 60px;
+}
+
+input {
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  padding: 8px 15px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.5em;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+p {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.jogo {
+  text-align: center;
+}

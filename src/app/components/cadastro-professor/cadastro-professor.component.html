@@ -6,47 +6,58 @@
   <title>Document</title>
 </head>
 <body>
-  <header>
-    <div class="header-inicial">
-      <div class="title">
-        <h1>APLICATIVO WEB PARA AULAS DE INFORMÁTICA DO ENSINO FUNDAMENTAL</h1>
-      </div>
-      <nav>
-        <a href="#">Escolas</a>
-        <a href="#">Novidades</a>
-      </nav>
+  <app-header></app-header>
+  <main>
+    <div class="container">
+      <fieldset class="cadastro">
+        <legend>Cadastro</legend>
+        <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" formControlName="nome" required>
+
+          <label for="sobrenome">Sobrenome:</label>
+          <input type="text" id="sobrenome" formControlName="sobrenome" required>
+
+          <label for="idade">Idade:</label>
+          <input type="number" id="idade" formControlName="idade" required>
+          <small class="age-note">Você deve ter no mínimo 18 anos.</small>
+
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" formControlName="email" required>
+
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" formControlName="senha" required>
+
+          <label for="confirmarSenha">Confirmar Senha:</label>
+          <input type="password" id="confirmarSenha" formControlName="confirmarSenha" required>
+
+          <div class="password-mismatch" *ngIf="cadastroForm.hasError('SenhaNaoCoincide') && (cadastroForm.get('confirmarSenha')?.dirty || cadastroForm.get('confirmarSenha')?.touched)">
+            <span *ngIf="cadastroForm.errors?.['SenhaNaoCoincide']">
+              As senhas não coincidem. Por favor, digite novamente.
+            </span>
+          </div>
+          
+          <div class="password-mismatch" *ngIf="cadastroForm.hasError('SenhaInvalida') && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)">
+            <span *ngIf="cadastroForm.get('senha')?.errors?.['SenhaInvalida']">
+              A senha deve conter pelo menos um caractere especial, um número ou uma letra maiúscula.
+            </span>
+          </div>
+          
+
+          <small class="password-hint">
+            A senha deve conter pelo menos 6 caracteres, incluindo uma letra maiúscula, uma letra minúscula, um número e um caractere especial.
+          </small>
+    
+          <label for="escola">Escola:</label>
+          <input type="text" id="escola" formControlName="escola">
+
+           <label for="numero">Número:</label>
+          <input type="text" id="numero" formControlName="numero" placeholder="12987654321">
+
+          <button type="submit" [disabled]="cadastroForm.invalid">Cadastrar</button>
+        </form>
+      </fieldset>
     </div>
-  </header>
-  <body>
-    <fieldset>
-      <legend>Cadastro</legend>
-      <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" formControlName="nome" required>
-
-        <label for="sobrenome">Sobrenome:</label>
-        <input type="text" id="sobrenome" formControlName="sobrenome" required>
-
-        <label for="idade">Idade:</label>
-        <input type="number" id="idade" formControlName="idade" required>
-
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" formControlName="email" required>
-
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" formControlName="senha" required>
-
-        <label for="confirmarSenha">Confirmar Senha:</label>
-        <input type="password" id="confirmarSenha" formControlName="confirmarSenha" required>
-
-        <label for="escola">Escola:</label>
-        <input type="text" id="escola" formControlName="escola">
-
-        <label for="numero">Número:</label>
-        <input type="text" id="numero" formControlName="numero">
-        <button type="submit" [disabled]="cadastroForm.invalid">Cadastrar</button>
-      </form>
-    </fieldset>
-  </body>
+  </main>
 </body>
 </html>

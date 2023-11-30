@@ -5,8 +5,9 @@
     padding: 0;
 }
 
-body {
+main {
     height: 100vh;
+    margin-top: 5%;
     box-sizing: border-box;
     background-color: #e0dfdf;
     background-image:url(fundo.png);
@@ -40,7 +41,8 @@ body {
     align-items: center;
     align-content: center;
     justify-self: start;
-
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .foto{
@@ -52,6 +54,11 @@ body {
     margin-top: 15%;
     justify-self: start;
 }
+
+.foto a {
+    text-decoration: none;
+}
+
 
 .infos{
     align-items: center;
@@ -69,7 +76,7 @@ body {
     line-height: normal;
     font-weight: 700;
     font-size: 30px;
-    text-align: center;
+    text-align: center;   
 }
 
 .infotec{
@@ -80,6 +87,33 @@ body {
     font-weight: 400;
     font-size: 20px;
     text-align: center;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.info-professor,
+.info-escola {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.info-professor p {
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+
+.info-professor label {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+
+.info-escola label {
+  margin-right: 5px;
+  font-weight: bold;
 }
 
 .turmas{
@@ -94,6 +128,9 @@ body {
     border: 4px solid var(--preto, #000);
 }
 
+.turmas h2 {
+    margin: 20px 0 0 10px;
+}
 
 .modal {
     position: fixed;
@@ -104,29 +141,72 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-  }
+}
   
-  .modal-content {
+.modal-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
     width: 80%;
-  }
+    max-width: 500px;
+    position: relative;
+    border: 5px solid #887f7f; 
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content textarea {
+    width: calc(100%);
+    min-width: calc(100% - 16px);
+    max-width: calc(100% - 16px); 
+    min-height: 40px;
+    max-height: 150px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box; 
+}
   
-  .close {
+.close {
+    color: #aaa;
     float: right;
     cursor: pointer;
-    border: 4px solid var(--preto, #000);
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea {
+  width: calc(100% - 40px);
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    transition: 1s;
+    background-color: #0056b3;
 }
 
 #lista-turmas {
     list-style: none; 
     padding: 0; 
-    margin-left: 20px;
-    margin-top: 20px;
+    margin: 5px 0 0 10px;
     max-width: 300px;
-  }
+}
   
 .lista-turmas-container {
     max-width: 800px;
@@ -142,13 +222,15 @@ body {
     font-weight: bolder;
     color: #333; 
     display: block; 
-    padding: 8px; 
+    padding: 20px; 
     border: 1px solid #000000; 
     border-radius: 5px;
     width: 45rem;
+    font-size: 20px;
 }
   
 .item-lista a:hover {
+    transition: 0.5s;
     background-color: #70f470; 
 }
 
@@ -165,9 +247,11 @@ body {
     flex-grow: 1;
     max-height: 450px;
     overflow-y: auto;
-    margin-bottom: 10px; 
-    margin-top: 40px;
+    margin: 30px 0 10px 10px;
     padding-right: 5px; 
+    border: solid 1px;
+    border-radius: 5px;
+    color: #919497;
  }
 
 .adicionar-button {
@@ -186,4 +270,22 @@ body {
 .adicionar-button button:hover{
     transition: 1s;
     background-color: #70f470;
+}
+
+.botao button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+.botao button:nth-child(1) {
+    background-color: #007bff;
+    color: white;
+}
+  
+.botao button:nth-child(2) {
+    background-color: #dc3545;
+    color: white;
 }

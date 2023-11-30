@@ -19,13 +19,29 @@ export class CadastroProfessorComponent implements OnInit {
     this.cadastroForm = this.formBuilder.group({
       nome: ['', Validators.required],
       sobrenome: ['', Validators.required],
-      idade: ['', [Validators.required, Validators.min(0)]],
+      idade: ['', [Validators.required, Validators.min(18)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       confirmarSenha: ['', Validators.required],
       escola: [''],
-      numero: [''],
+      numero: ['', [Validators.required, Validators.minLength(11)]],
+    }, {
+      validator: this.confirmaSenhaValidator // Adiciona a validação personalizada
     });
+  }
+
+  confirmaSenhaValidator(formGroup: FormGroup) {
+    const senha = formGroup.get('senha')?.value;
+    const confirmarSenha = formGroup.get('confirmarSenha')?.value;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+  
+    if (senha !== confirmarSenha) {
+      return { SenhaNaoCoincide: true };
+    } else if (!regex.test(senha)) {
+      return { SenhaInvalida: true };
+    } else {
+      return null;
+    }
   }
 
   cadastrar() {

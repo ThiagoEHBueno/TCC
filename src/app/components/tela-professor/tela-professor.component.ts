@@ -13,6 +13,10 @@ export class TelaProfessorComponent implements OnInit {
     descricao: '',
     email: '',
   };
+  nomeProfessor: string = '';
+  escolaProfessor: string = '';
+  sobrenomeProfessor: string = '';
+
 
   modalAberto: boolean = false;
 
@@ -20,6 +24,13 @@ export class TelaProfessorComponent implements OnInit {
 
   
   ngOnInit() {
+    const emailProfessor = localStorage.getItem('userEmail');
+    console.log('Valor de emailProfessor:', emailProfessor);
+
+    if (emailProfessor) {
+      this.obterInformacoesProfessorPorEmail(emailProfessor);
+      // Carregar as turmas ao inicializar o componente
+    }
     // Carregar as turmas ao inicializar o componente
     this.carregarTurmas();
   }
@@ -47,11 +58,14 @@ export class TelaProfessorComponent implements OnInit {
   adicionarTurma() {
     const nomeTurmaElement = document.getElementById('nomeTurma') as HTMLInputElement;
     const descricaoTurmaElement = document.getElementById('descricaoTurma') as HTMLTextAreaElement;
-
+    console.log(nomeTurmaElement)
+   
     if (nomeTurmaElement && descricaoTurmaElement) {
       const nomeTurma = nomeTurmaElement.value;
       const descricaoTurma = descricaoTurmaElement.value;
-
+      console.log(nomeTurma)
+      
+      
 
     console.log('Adicionar turma chamado');
     // Recuperar o email do usuário armazenado no localStorage
@@ -68,13 +82,15 @@ export class TelaProfessorComponent implements OnInit {
     this.novaTurma.email = userEmail;
     
 
-    const turmaData = {
-      ...this.novaTurma,
-      emailProfessor: userEmail,
-      nome: nomeTurma,
-      descricao: descricaoTurma
-    };
+      const turmaData = {
+        ...this.novaTurma,
+        emailProfessor: userEmail,
+        nome: nomeTurma,
+        descricao: descricaoTurma
+        
+      };
 
+    
     this.authService.criarTurma(turmaData).subscribe(
       (data) => {
         console.log('Turma criada com sucesso:', data);
@@ -113,7 +129,20 @@ carregarTurmas() {
       // Tratar possíveis erros ao buscar as turmas
     }
   );
-  
-}
-
+  }
+  obterInformacoesProfessorPorEmail(email: string) {
+    this.authService.obterProfessorPorEmail(email).subscribe(
+      (data) => {
+        console.log(data)
+        // Aqui você pode manipular os dados do professor
+        this.nomeProfessor = data.nome;
+        this.sobrenomeProfessor = data.sobrenome;
+        this.escolaProfessor = data.escola;
+      },
+      (error) => {
+        console.error('Erro ao obter informações do professor:', error);
+        // Tratar possíveis erros ao obter as informações do professor
+      }
+    );
+  }
 }

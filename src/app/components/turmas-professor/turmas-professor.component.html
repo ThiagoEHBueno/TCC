@@ -7,11 +7,11 @@
   <title>Classes</title>
 </head>
 <body>
-  <header></header>
+  <app-header></app-header>
   <main class="professor-turmas">
     <section class="bloco">
         <div class="voltar" alt="Voltar">
-            <a routerLink="/tela-professor"><img src="voltar-imagem.png"></a>
+            <a routerLink="/tela-professor"><img src="assets/imagens/voltar-imagem.png"></a>
             <h3><p>Voltar</p></h3>
         </div>
         <div class="botao">
@@ -19,9 +19,9 @@
             <button>Alunos</button>
         </div>
         <div class="alunos-lista">
-          <h2>Alunos</h2>
-          <ul>
-            <li *ngFor="let aluno of alunos">
+          <h2>Alunos:</h2>
+          <ul class="lista-alunos">
+            <li *ngFor="let aluno of alunos" class="aluno-item">
               <p>{{ aluno.nome }} {{ aluno.sobrenome }}</p>
               <!-- Adicione aqui outras informações do aluno que deseja exibir -->
             </li>
@@ -29,14 +29,14 @@
         </div>    
         <div class="adicionar">
           <fieldset>
+            <legend>Cadastrar aluno</legend>
             <form [formGroup]="alunoForm" (ngSubmit)="cadastrarAluno()">
               <input type="text" placeholder="Usuario" formControlName="nome_usuario" required>
               <input type="text" placeholder="Nome" formControlName = "nome" required>
               <input type="text" placeholder="Sobrenome" formControlName = "sobrenome" required>
               <input type="password" placeholder="Senha" formControlName = "senha" required>
               <select formControlName = "tipoAluno">
-                <option value="aluno">Aluno</option>
-                <!-- Outras opções de tipo, se necessário -->
+                <option value="aluno" >Aluno</option>
               </select>
               <button type="submit">Cadastrar</button>
             </form>

@@ -6,8 +6,9 @@
     padding: 0;
 }
 
-body {
-    height: 100vh;
+main {
+    margin-top: 8%;
+    height: 90vh;
     box-sizing: border-box;
     background-color: #e0dfdf;
     background-image:url(fundo.png);
@@ -30,6 +31,7 @@ h1{
     font-weight: 700;
     font-size: 30px;
     padding: 3%;
+    margin: 15px 0 0 3px;
 }
 
 h3{
@@ -73,39 +75,6 @@ h3{
 .ferramenta-info h3 {
     width: 450px;
     font-size: 25px;
-}
-
-
-body {
-    background: linear-gradient(to right, #f8dcdcb7, #ced1f7a1, #def8e7a9);
-    background-size: 400% 400%;
-    animation: gradient 12s ease infinite;
-    background-attachment: fixed;
-}
-
-@keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-}
-
-span {
-    animation: rainbow 2s ease infinite;
-}
-
-@keyframes rainbow {
-    0% { color: #cc2cbc; }
-    20% { color: #9127ca; }
-    40% { color: #c72c39; }
-    60% { color: #c72c39; }
-    80% { color: #9127ca; }
-    100% { color: #cc2cbc; }
 }
 
 #content {
@@ -169,7 +138,7 @@ span {
 .white.key-pressed,
 .black.key-pressedsus {
     background: linear-gradient(to left, #f7c5f0, #e1bdf8, #f77a84);
-    background-size: 400% 400%;
+    background-size: 100% 100%;
     animation: gradient 3s ease infinite;
     background-attachment: fixed;
 }
@@ -178,4 +147,30 @@ span {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}
+
+span {
+    animation: rainbow 2s ease infinite;
+}
+
+@keyframes rainbow {
+    0% { color: #cc2cbc; }
+    20% { color: #9127ca; }
+    40% { color: #c72c39; }
+    60% { color: #c72c39; }
+    80% { color: #9127ca; }
+    100% { color: #cc2cbc; }
 }

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private baseUrl = 'http://localhost:3000/api';
+  nomeTurma: string = '';
 
   constructor(private http: HttpClient) {}
 
@@ -52,4 +53,15 @@ export class AuthService {
     return this.http.get<any[]>(`${this.baseUrl}/obterAlunosDaTurma/${idTurma}`);
   }
 
+  obterProfessorPorEmail(email: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/obterProfessorPorEmail/${email}`);
+  }
+  
+  setNomeTurma(nome: string) {
+    this.nomeTurma = nome;
+  }
+
+  getNomeTurma() {
+    return this.nomeTurma;
+  }
 }

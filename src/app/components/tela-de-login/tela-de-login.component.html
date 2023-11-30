@@ -6,13 +6,7 @@
   <title>Document</title>
 </head>
 <body>
-  <header>
-    <div class="header-inicial">
-      <div class="title">
-        <h1>APLICATIVO WEB PARA AULAS DE INFORMÁTICA DO ENSINO FUNDAMENTAL</h1>
-      </div>
-    </div>
-  </header>
+  <app-header></app-header>
   <main>
     <div>
       <form>
@@ -25,14 +19,16 @@
             </select>
           </div>
           <br><br>
-          <input *ngIf="tipo === 'professor'" type="email" [(ngModel)]="email" name="email" placeholder="email">
-          <input *ngIf="tipo === 'aluno'" type="email" [(ngModel)]="nomeUsuario" name="nomeUsuario" placeholder="email">
-          <br><br>
-          <input *ngIf="tipo === 'professor'" type="password" [(ngModel)]="senha" name="senha" placeholder="senha">
-          <input *ngIf="tipo === 'aluno'" type="password" [(ngModel)]="senha" name="senha" placeholder="senha">
-          <br><br>
-          <button type="submit" *ngIf="tipo === 'professor'" (click)="fazerLogin()">Login Professor</button>
-          <button type="submit" *ngIf="tipo === 'aluno'" (click)="fazerLoginAluno()">Login Aluno</button>
+          <div *ngIf="tipo === 'professor'" class="input-container">
+            <input type="email" [(ngModel)]="email" name="email" placeholder="Email">
+            <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha">
+            <button type="submit" (click)="fazerLogin()">Login Professor</button>
+          </div>
+          <div *ngIf="tipo === 'aluno'" class="input-container">
+            <input type="email" [(ngModel)]="nomeUsuario" name="nomeUsuario" placeholder="Usuário">
+            <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha">
+            <button type="submit" (click)="fazerLoginAluno()">Login Aluno</button>
+          </div>
           <br>
           <label>Não tem uma conta?</label>
           <a routerLink="/cadastro-professor">Cadastro</a>

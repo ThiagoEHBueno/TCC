@@ -123,9 +123,6 @@ app.post('/api/login', (req, res) => {
   }
 });
 
-
-// Supondo que você já configurou seu servidor Express e tem o MySQL conectado
-
 app.post('/api/criarTurma', (req, res) => {
   const { nome, descricao, email } = req.body;
   console.log('Dados recebidos:', { nome, descricao, email });
@@ -185,6 +182,26 @@ app.post('/api/cadastrarAluno', async (req, res) => {
   }
 });
 
+app.get('/api/obterAlunosDaTurma/:idTurma', async (req, res) => {
+  const idTurma = req.params.idTurma;
+  
+  try {
+    console.log(idTurma)
+    // Consulta ao banco de dados para obter os alunos de uma turma específica
+    db.query('SELECT * FROM alunos WHERE id_turma = ?', [idTurma], (err, result) => {
+      if (err) {
+        console.error('Erro ao buscar alunos da turma:', err);
+        res.status(500).json({ error: 'Erro interno do servidor' });
+      } else {
+        console.log('Alunos da turma obtidos com sucesso');
+        res.status(200).json(result); // Retorna os alunos da turma em formato JSON
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao buscar alunos da turma:', error);
+    res.status(500).json({ error: 'Erro interno do servidor' });
+  }
+});
 
 app.get('/api/obterAlunos', async (req, res) => {
   try {
@@ -204,23 +221,28 @@ app.get('/api/obterAlunos', async (req, res) => {
   }
 });
 
-app.get('/api/obterAlunosDaTurma/:idTurma', async (req, res) => {
-  const idTurma = req.params.idTurma;
+app.get('/api/obterProfessorPorEmail/:emailUsuario', async (req, res) => {
+  const emailUsuario = req.params.emailUsuario;
   
   try {
-    console.log(idTurma)
-    // Consulta ao banco de dados para obter os alunos de uma turma específica
-    db.query('SELECT * FROM alunos WHERE id_turma = ?', [idTurma], (err, result) => {
+    // Consulta ao banco de dados para obter as informações do usuário com o email fornecido
+    db.query('SELECT nome, sobrenome, escola FROM usuarios WHERE email = ?', [emailUsuario], (err, result) => {
       if (err) {
-        console.error('Erro ao buscar alunos da turma:', err);
+        console.error('Erro ao buscar o usuário:', err);
         res.status(500).json({ error: 'Erro interno do servidor' });
       } else {
-        console.log('Alunos da turma obtidos com sucesso');
-        res.status(200).json(result); // Retorna os alunos da turma em formato JSON
+        if (result.length > 0) {
+          const usuario = result[0]; // O resultado da query é um array, pegamos o primeiro item se existir
+          console.log('Usuário obtido com sucesso:', usuario); // Adicionando log para mostrar o usuário encontrado
+          res.status(200).json(usuario); // Retorna as informações do usuário em formato JSON
+        } else {
+          console.log('Usuário não encontrado para o email:', emailUsuario); // Log indicando que o usuário não foi encontrado
+          res.status(404).json({ message: 'Usuário não encontrado' });
+        }
       }
     });
   } catch (error) {
-    console.error('Erro ao buscar alunos da turma:', error);
+    console.error('Erro ao buscar o usuário:', error);
     res.status(500).json({ error: 'Erro interno do servidor' });
   }
 });
@@ -290,8 +312,6 @@ app.post('/api/loginAluno', (req, res) => {
     res.status(400).json({ error: 'Tipo de usuário inválido' });
   }
 });
-
-
 
 app.listen(port, () => {
   console.log(`Servidor está ouvindo na porta ${port}`);
