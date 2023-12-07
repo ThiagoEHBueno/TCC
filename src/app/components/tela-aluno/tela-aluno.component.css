@@ -95,3 +95,13 @@ main {
     background-repeat: no-repeat;
     background-position: top 15px center;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    transition: 1s;
+    color: blue;
+}

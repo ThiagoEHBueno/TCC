@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -23,49 +23,65 @@ export class TurmasProfessorComponent implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
   ) { }
 
   ngOnInit() {
-   
+    const emailProfessor = localStorage.getItem('userEmail');
+    console.log(emailProfessor)
     this.alunoForm = this.formBuilder.group({
       nome_usuario: ['', Validators.required],
       nome: ['', Validators.required],
       sobrenome: ['', Validators.required],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      tipoAluno: ['aluno'] // Certifique-se de adicionar o campo tipoAluno no FormGroup
+      confirmarSenha: ['', Validators.required],
+      tipoAluno: ['aluno'] 
+    }, {
+      validators: this.passwordMatchValidator
     });
 
     const id = this.route.snapshot.paramMap.get('id');
     if (id !== null) {
-      const parsedId = parseInt(id, 10); // Converter a string para número
+      const parsedId = parseInt(id, 10); 
       if (!isNaN(parsedId)) {
         this.turmaId = parsedId;
         this.obterAlunosDaTurma(parsedId);  
         this.changeDetectorRef.detectChanges();
       } else {
-        // Tratar caso o ID não seja um número válido
+        console.error('ID inválido. O ID fornecido não é um número válido.');
       }
     } else {
-      // Tratar caso o ID não esteja presente na rota
+      console.error('ID ausente. Nenhum ID fornecido na rota.');
     }
   }
 
+  abrirAtividades() {
+    this.router.navigate(['/lista-de-atividades']); 
+  }
+
+  passwordMatchValidator(group: FormGroup) {
+    const senha = group.get('senha')?.value;
+    const confirmarSenha = group.get('confirmarSenha')?.value;
+  
+    return senha === confirmarSenha ? null : { mismatch: true };
+  }
+
   cadastrarAluno() {
+    const emailProfessor = localStorage.getItem('userEmail');
     if (this.alunoForm.valid) {
       const alunoData = this.alunoForm.value;
       alunoData['tipo'] = 'aluno'; // Adiciona o tipo de usuário ao objeto do aluno
+      alunoData['email_professor'] = emailProfessor;
 
       alunoData['id_turma'] = this.turmaId;
 
       this.authService.cadastrarAluno(alunoData).subscribe(
         (data) => {
           console.log('Aluno cadastrado com sucesso:', data);
-          // Lógica para lidar com o sucesso do cadastro
         },
         (error) => {
           console.error('Erro ao cadastrar aluno:', error);
-          // Lógica para lidar com o erro de cadastro
         }
       );
     }
@@ -78,9 +94,7 @@ export class TurmasProfessorComponent implements OnInit {
       },
       (error) => {
         console.error('Erro ao obter alunos da turma:', error);
-        // Lógica para lidar com erro ao obter alunos da turma
       }
     );
   }
-
 }

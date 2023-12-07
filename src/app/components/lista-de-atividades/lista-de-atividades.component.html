@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <app-header class="header"></app-header>
+    <main>
+        <div class="background"></div>
+        <div class="content">
+            <h1>Área de atividades</h1>
+            <form (ngSubmit)="enviarAtividade()">
+                <input type="text" [(ngModel)]="tituloAtividade" name="tituloAtividade" placeholder="Título da atividade">
+                <select (change)="selecionarTurma($event)">
+                    <option *ngFor="let turma of turmas" [value]="turma.id ? turma.id.toString() : ''">{{ turma.nome }}</option>
+                </select>        
+                <div *ngFor="let pergunta of perguntas; let i = index">
+                    <label for=""> ----------------------------------------------------------------------------------------------------------------</label>
+                    <input type="text" [(ngModel)]="pergunta.enunciado" name="enunciado{{i}}" placeholder="Enunciado da pergunta">
+                    <input type="text" [(ngModel)]="pergunta.opcoes[0]" name="opcaoA{{i}}" placeholder="Opção A">
+                    <input type="text" [(ngModel)]="pergunta.opcoes[1]" name="opcaoB{{i}}" placeholder="Opção B">
+                    <input type="text" [(ngModel)]="pergunta.opcoes[2]" name="opcaoC{{i}}" placeholder="Opção C">
+                    <input type="text" [(ngModel)]="pergunta.opcoes[3]" name="opcaoD{{i}}" placeholder="Opção D">
+                </div>
+                <div class="botoes">
+                    <button (click)="adicionarPergunta()">Nova Pergunta</button>
+                    <button type="submit">Enviar Atividade</button>
+                </div>       
+            </form>
+        </div>
+    </main>  
+</body>
+</html>

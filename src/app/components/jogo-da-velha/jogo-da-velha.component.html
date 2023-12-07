@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classes</title>
+</head>
+<body>
+  <app-header></app-header>
+  <main>
+    <section class="bloco">
+        <h1>Jogo da velha</h1>
+        <div *ngIf="!vencedor">
+            <p>Vez de {{ jogadorAtual === 'X' ? jogador1 : jogador2 }}</p>
+        </div>
+        <!-- Exemplo no seu HTML -->
+        <div class="game-board">
+            <div *ngFor="let row of [0, 1, 2]" class="board-row">
+                <div *ngFor="let col of [0, 1, 2]" class="board-cell" (click)="fazerJogada(row, col)">
+                    <span [ngClass]="{'x-cell': tabuleiro[row][col] === 'X', 'o-cell': tabuleiro[row][col] === 'O'}">
+                    {{ tabuleiro[row][col] !== '' ? tabuleiro[row][col] : '' }}
+                    </span>
+                </div>
+            </div>
+        </div>
+  
+        <div *ngIf="vencedor" class="winner-message">
+            O jogador {{ vencedor === 'X' ? jogador1 : jogador2 }} venceu!
+        </div>
+        <div *ngIf="empate" class="draw-message">
+            O jogo terminou em empate!
+          </div>
+        <div class="jogadores">
+            <label for="jogador1">Nome do Jogador 1: </label>
+            <input type="text" id="jogador1" [(ngModel)]="jogador1">
+        </div>
+        <div class="jogadores">
+            <label for="jogador2">Nome do Jogador 2: </label>
+            <input type="text" id="jogador2" [(ngModel)]="jogador2">
+        </div>
+        <button (click)="reiniciarJogo()">Reiniciar Jogo</button>
+    </section>  
+  </main>
+</body>
+</html>

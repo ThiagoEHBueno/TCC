@@ -26,7 +26,7 @@ export class CadastroProfessorComponent implements OnInit {
       escola: [''],
       numero: ['', [Validators.required, Validators.minLength(11)]],
     }, {
-      validator: this.confirmaSenhaValidator // Adiciona a validação personalizada
+      validator: this.confirmaSenhaValidator 
     });
   }
 
@@ -47,7 +47,7 @@ export class CadastroProfessorComponent implements OnInit {
   cadastrar() {
     const usuario = {
       ...this.cadastroForm.value,
-      tipo: this.tipoUsuario  // Adiciona o tipo de usuário ao objeto do usuário
+      tipo: this.tipoUsuario 
     };
   
     this.authService.cadastrarUsuario(usuario).subscribe(

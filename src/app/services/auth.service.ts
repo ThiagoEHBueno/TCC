@@ -57,11 +57,43 @@ export class AuthService {
     return this.http.get<any>(`${this.baseUrl}/obterProfessorPorEmail/${email}`);
   }
   
-  setNomeTurma(nome: string) {
-    this.nomeTurma = nome;
+  obterAlunoPorUsuario(nome_usuario: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/obterAlunoPorUsuario/${nome_usuario}`);
+  }
+  
+  obterAtividadesDaTurmaParaAluno(idTurma: number, idAluno: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/atividades/turma/${idTurma}/alunos/${idAluno}`);
   }
 
-  getNomeTurma() {
-    return this.nomeTurma;
+  obterAlunosComTurma(emailProfessor: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/obterAlunosComTurma/${emailProfessor}`);
+  }
+  
+  enviarAtividade(atividadeData: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/enviarAtividade`, atividadeData);
+  }
+
+  obterAtividadesPorTurma(idTurma: string): Observable<any[]> {
+    const url = `${this.baseUrl}/atividades/turma/${idTurma}`;
+    return this.http.get<any[]>(url);
+  }
+
+  obterIdTurmaDoAluno(alunoUsuario: string): Observable<any> {
+    return this.http.get<any>(`/api/obterIdTurmaDoAluno/${alunoUsuario}`);
+  }
+
+  buscarAtividadePorId(id: number): Observable<any> {
+    const url = `${this.baseUrl}/atividades/${id}`;
+    return this.http.get<any>(url);
+  }
+  
+  buscarPerguntasDaAtividade(id: number): Observable<any> {
+    const url = `${this.baseUrl}/perguntas/${id}`;
+    return this.http.get<any>(url);
+  }
+
+  buscarOpcoesRespostaPorPerguntaId(idPergunta: number): Observable<any> {
+    const url = `${this.baseUrl}/opcoes-resposta/${idPergunta}`;
+    return this.http.get<any>(url);
   }
 }

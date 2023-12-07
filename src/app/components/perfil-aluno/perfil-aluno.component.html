@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Professor</title>
+</head>
+<body>
+  <app-header></app-header>
+  <main class="professorhome">
+    <div class="bloco">
+      <section class="perfil">
+        <div class="foto" alt="Foto de Perfil">
+          <a routerLink="/tela-de-login"><img src="assets/imagens/fotoexemplo.png" alt="Foto de Exemplo"></a>
+        </div>
+        <div class="infos">
+          <div class="infotec">
+            <div class="info-aluno">
+              <label>Aluno:</label>
+              <p>{{ nomeAluno }}</p>
+            </div>
+          </div>
+          <div class="botao">
+            <button routerLink="/tela-aluno">Tela inicial</button>
+            <button (click)="sair()">Sair</button>
+          </div>
+        </div>
+      </section>
+      <section class="turmas">
+        <h2>Atividades:</h2>
+        <div class="lista-turmas-container">
+          <ul id="lista-turmas">
+            <li class="item-lista">
+            </li>
+          </ul>
+        </div>    
+      </section>
+    </div>
+  </main>
+</body>
+</html>

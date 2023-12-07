@@ -25,9 +25,17 @@
               <p>{{ escolaProfessor }}</p>
             </div>
           </div>
+          <div class="ferramentabotao">
+            <a routerLink="/lista-de-ferramentas" target="_blank">
+              <button>Ferramentas</button>
+            </a>
+            <a routerLink="/lista-de-atividades">
+              <button>Atividades</button>
+            </a>
+          </div>
           <div class="botao">
             <button>Configurar</button>
-            <button routerLink="/tela-de-login">Sair</button>
+            <button (click)="sair()">Sair</button>
           </div>
         </div>
       </section>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <app-header></app-header>
+  <main>
+    <div class="container">
+      <div class="avoltar">
+        <a routerLink="/lista-de-atividades-alunos" class="link-voltar"><img src="assets/imagens/voltar-cinza.png" alt="Voltar"></a>
+      </div>
+      <fieldset>
+        <div *ngIf="atividade">
+          <h2>Atividade: {{ atividade?.titulo }}</h2>
+          <div *ngIf="perguntas.length > 0">
+            <h3>Perguntas:</h3>
+            <!--Perguntas-->
+            <ul>
+              <li *ngFor="let pergunta of perguntas; let i = index" class="borda">
+                <span>{{ i + 1 }}) {{ pergunta.texto_da_pergunta }}</span>
+                <ul>
+                  <li *ngIf="pergunta.opcoes && pergunta.opcoes.length > 0">
+                    <!--Opções de resposta-->
+                    <ul>
+                      <li *ngFor="let opcao of pergunta.opcoes" class="option-item">
+                        <label>
+                          <input type="radio" [name]="'pergunta_' + pergunta.id" [value]="opcao.texto_da_opcao">
+                          {{ opcao.texto_da_opcao }}
+                        </label>
+                      </li>
+                    </ul>
+                    
+                  </li>
+                  <li *ngIf="!pergunta.opcoes || pergunta.opcoes.length === 0">
+                    <p>Nenhuma opção de resposta encontrada para esta pergunta.</p>
+                  </li>
+                </ul>
+        
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="perguntas.length === 0">
+            <p>Nenhuma pergunta encontrada para esta atividade.</p>
+          </div>
+        </div>
+        <div *ngIf="!atividade">
+          <p>A atividade não foi carregada ou não existe.</p>
+        </div>
+        <div class="botao">
+          <button>Enviar respostas</button>
+        </div>
+      </fieldset>  
+    </div>  
+  </main>
+</body>
+</html>

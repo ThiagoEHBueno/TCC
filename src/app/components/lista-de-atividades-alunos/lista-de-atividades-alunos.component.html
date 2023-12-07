@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <app-header></app-header>
+  <main>
+    <app-atividade-aluno *ngIf="atividadeSelecionada" [atividade]="atividadeSelecionada"></app-atividade-aluno>
+    <div class="container">
+      <div class="containerat">
+        <div class="avoltar">
+            <a routerLink="/tela-aluno" class="link-voltar"><img src="assets/imagens/voltar-cinza.png" alt="Voltar"></a>
+        </div>
+        <div class="titulo">
+            <h1>Atividades</h1>
+        </div>
+      </div>  
+      <div class="atividades-grid">
+        <div *ngFor="let atividade of atividades" class="atividade-card">
+          <h3>{{ atividade.titulo }}</h3>
+          <button (click)="selecionarAtividade(atividade)">Ver Detalhes</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

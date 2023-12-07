@@ -1,5 +1,7 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-tela-professor',
@@ -20,7 +22,7 @@ export class TelaProfessorComponent implements OnInit {
 
   modalAberto: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   
   ngOnInit() {
@@ -29,9 +31,7 @@ export class TelaProfessorComponent implements OnInit {
 
     if (emailProfessor) {
       this.obterInformacoesProfessorPorEmail(emailProfessor);
-      // Carregar as turmas ao inicializar o componente
     }
-    // Carregar as turmas ao inicializar o componente
     this.carregarTurmas();
   }
 
@@ -68,8 +68,10 @@ export class TelaProfessorComponent implements OnInit {
       
 
     console.log('Adicionar turma chamado');
-    // Recuperar o email do usuário armazenado no localStorage
+
+    // recuperando o email
     const userEmail = localStorage.getItem('userEmail');
+   
     
 
     if (!userEmail) {
@@ -78,7 +80,7 @@ export class TelaProfessorComponent implements OnInit {
       return;
     }
 
-    // Montar os dados da turma, incluindo o email do professor
+    // Monta os dados da turma
     this.novaTurma.email = userEmail;
     
 
@@ -96,11 +98,10 @@ export class TelaProfessorComponent implements OnInit {
         console.log('Turma criada com sucesso:', data);
         this.listaTurmas.push(data); // Adiciona a nova turma à lista para ser exibida no HTML
         console.log('Lista de turmas atualizada:', this.listaTurmas);
-        this.fecharModal(); // Fecha o modal após salvar a turma
+        this.fecharModal();
       },
       (error) => {
         console.error('Erro ao criar turma:', error);
-        // Tratar possíveis erros ao criar a turma
       }
     );
   }
@@ -112,7 +113,7 @@ carregarTurmas() {
       console.error('Email do usuário não encontrado.');
       return;
     }
-  // Chamada para buscar as turmas
+  
   this.authService.obterTurmas().subscribe(
     (data) => {
       this.listaTurmas = data.filter((turma: any) => {
@@ -126,7 +127,6 @@ carregarTurmas() {
     },
     (error) => {
       console.error('Erro ao carregar turmas:', error);
-      // Tratar possíveis erros ao buscar as turmas
     }
   );
   }
@@ -134,15 +134,18 @@ carregarTurmas() {
     this.authService.obterProfessorPorEmail(email).subscribe(
       (data) => {
         console.log(data)
-        // Aqui você pode manipular os dados do professor
+        // pega os dados do professor
         this.nomeProfessor = data.nome;
         this.sobrenomeProfessor = data.sobrenome;
         this.escolaProfessor = data.escola;
       },
       (error) => {
         console.error('Erro ao obter informações do professor:', error);
-        // Tratar possíveis erros ao obter as informações do professor
       }
     );
+  }
+  sair() {
+    localStorage.removeItem('userEmail');
+    this.router.navigate(['/tela-de-login']);
   }
 }

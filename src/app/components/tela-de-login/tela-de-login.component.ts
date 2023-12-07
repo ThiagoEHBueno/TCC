@@ -38,7 +38,7 @@ export class TelaDeLoginComponent {
         }
       },
       (err) => {
-        // Tratamento de erros específicos
+
         console.error('Erro ao fazer login:', err);
         if (err.status === 401) {
           alert('Credenciais inválidas. Verifique seu email e senha.');
@@ -59,10 +59,11 @@ export class TelaDeLoginComponent {
   
     const credentials = { nomeUsuario: this.nomeUsuario, senha: this.senha, tipo: this.tipo };
     console.log('dados: ', credentials);
+    localStorage.setItem('user', this.nomeUsuario);
     
     this.authService.loginAluno(this.nomeUsuario, this.senha).subscribe(
       (res) => {
-        this.router.navigate(['/tela-aluno']); // ou outra rota específica para o aluno
+        this.router.navigate(['/tela-aluno']);
       },
       (err) => {
         console.error('Erro ao fazer login do aluno:', err);

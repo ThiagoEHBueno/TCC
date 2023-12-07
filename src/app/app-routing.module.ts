@@ -8,6 +8,13 @@ import { TurmasProfessorComponent } from './components/turmas-professor/turmas-p
 import { TelaAlunoComponent } from './components/tela-aluno/tela-aluno.component';
 import { FerramentaComponent } from './components/ferramenta/ferramenta.component';
 import { JogoComponent } from './components/jogo/jogo.component';
+import { ListaDeJogosComponent } from './components/lista-de-jogos/lista-de-jogos.component';
+import { ListaDeFerramentasComponent } from './components/lista-de-ferramentas/lista-de-ferramentas.component';
+import { PerfilAlunoComponent } from './components/perfil-aluno/perfil-aluno.component';
+import { JogoDaVelhaComponent } from './components/jogo-da-velha/jogo-da-velha.component';
+import { ListaDeAtividadesComponent } from './components/lista-de-atividades/lista-de-atividades.component';
+import { ListaDeAtividadesAlunosComponent } from './components/lista-de-atividades-alunos/lista-de-atividades-alunos.component';
+import { AtividadeAlunoComponent } from './components/atividade-aluno/atividade-aluno.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'tela-inicial', pathMatch: 'full'},
@@ -20,6 +27,13 @@ const routes: Routes = [
   {path: 'tela-aluno', component: TelaAlunoComponent },
   {path: 'ferramenta', component: FerramentaComponent },
   {path: 'jogo', component: JogoComponent },
+  {path: 'lista-de-jogos', component: ListaDeJogosComponent },
+  {path: 'lista-de-ferramentas', component: ListaDeFerramentasComponent },
+  {path: 'perfil-aluno', component: PerfilAlunoComponent },
+  {path: 'jogo-da-velha', component: JogoDaVelhaComponent },
+  {path: 'lista-de-atividades', component: ListaDeAtividadesComponent },
+  {path: 'lista-de-atividades-alunos', component: ListaDeAtividadesAlunosComponent },
+  {path: 'atividade-aluno/:id', component: AtividadeAlunoComponent },
 ];
 
 @NgModule({

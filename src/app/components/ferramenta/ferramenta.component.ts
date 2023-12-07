@@ -19,7 +19,7 @@ interface SoundMap {
 })
 export class FerramentaComponent implements OnInit {
   private keyStatus: KeyStatus = {
-    /*First Octave*/
+    /*Primeira oitava*/
     q: false,
     '2': false,
     w: false,
@@ -32,8 +32,7 @@ export class FerramentaComponent implements OnInit {
     y: false,
     '7': false,
     u: false,
-    /*End First Octave*/
-    /*Second Octave*/
+    /*Segunda oitava*/
     b: false,
     h: false,
     n: false,
@@ -46,7 +45,6 @@ export class FerramentaComponent implements OnInit {
     '.': false,
     ';': false,
     '/': false,
-    /*End Second Octave*/
   };
   audioStatus: AudioStatus = {};
   soundMap: SoundMap = {
